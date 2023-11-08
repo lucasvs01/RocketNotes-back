@@ -7,9 +7,11 @@ const express = require("express"); // importando o express para a aplicação
 const routes = require("./routes");
 const appError = require("./utils/appError");
 const uploadConfigs = require("./configs/upload")
+const cors = require("cors")
 
 const app = express();
 app.use(express.json())
+app.use(cors());
 
 app.use(routes) // -> primeiro venho aqui, e sou direcionado pra index no routes
 routes.use("/files", express.static(uploadConfigs.UPLOAD_FOLDER))
